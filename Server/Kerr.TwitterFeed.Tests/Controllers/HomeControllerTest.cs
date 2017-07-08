@@ -1,25 +1,30 @@
-﻿using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Kerr.TwitterFeed;
-using Kerr.TwitterFeed.Controllers;
-
-namespace Kerr.TwitterFeed.Tests.Controllers
+﻿namespace Kerr.TwitterFeed.Tests.Controllers
 {
+    using System.Web.Mvc;
+
+    using Kerr.TwitterFeed.Controllers;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class HomeControllerTest
     {
+        #region ///  Methods  ///
+
         [TestMethod]
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            var result = controller.Index() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
             Assert.AreEqual("Home Page", result.ViewBag.Title);
         }
+
+        #endregion
     }
 }

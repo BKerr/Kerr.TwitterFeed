@@ -5,8 +5,7 @@ import { TwitterTweetComponent } from './twitter-tweet/twitter-tweet.component';
 import { TwitterTimelineComponent } from './twitter-timeline/twitter-timeline.component';
 
 const routes: Routes = [
-    { path: 'timeline', component: TwitterTweetComponent },
-    { path: 'timeline/:id', component: TwitterTimelineComponent },
+    { path: 'timeline/:id', component: TwitterTimelineComponent }
 ];
 
 @NgModule({

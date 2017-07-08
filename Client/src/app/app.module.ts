@@ -25,4 +25,5 @@ const ROUTES = [
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
