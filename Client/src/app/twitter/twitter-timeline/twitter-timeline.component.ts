@@ -49,7 +49,15 @@ export class TwitterTimelineComponent implements OnInit, OnDestroy {
     this.route.params
         .switchMap((params: Params) => this.twitterService.getUser(params['id']))
         .takeUntil(this.ngUnsubscribe)
-        .subscribe(user => this.user = user);
+        .subscribe(user => {
+          this.user = user;
+
+          if (this.user['BackgroundImageUrl']) {
+            document.body.style["background-image"] = `url(${this.user['BackgroundImageUrl']})`;
+            document.body.style["background-size"] = 'cover';
+          }
+          
+        });
   }
 
   filterTweetsOn(searchTerm: string) {      
