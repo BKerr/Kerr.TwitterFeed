@@ -1,37 +1,36 @@
 ﻿namespace Kerr.TwitterFeed.Controllers
 {
-    using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Web.Http;
 
-    using Kerr.TwitterFeed.Services.Endpoints;
+    using Kerr.TwitterFeed.Services.Endpoints.Interfaces;
     using Kerr.TwitterFeed.Shared.Domain;
 
     /// <summary>
-    ///     The timeline controller.
+    ///     The user controller.
     /// </summary>
-    public class TimelineController : ApiController
+    public class UserController : ApiController
     {
         #region ///  Fields  ///
 
         /// <summary>
-        ///     The timeline service.
+        ///     The user service.
         /// </summary>
-        private readonly ITimelineService timelineService;
+        private readonly IUserService userService;
 
         #endregion
 
         #region ///  Constructors  ///
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TimelineController" /> class.
+        ///     Initializes a new instance of the <see cref="UserController" /> class.
         /// </summary>
-        /// <param name="timelineService">
-        ///     The timeline service.
+        /// <param name="userService">
+        ///     The user service.
         /// </param>
-        public TimelineController(ITimelineService timelineService)
+        public UserController(IUserService userService)
         {
-            this.timelineService = timelineService;
+            this.userService = userService;
         }
 
         #endregion
@@ -47,11 +46,11 @@
         /// <returns>
         ///     The <see cref="Task" />.
         /// </returns>
-        public async Task<IEnumerable<Tweet>> Get(string id)
+        public async Task<User> Get(string id)
         {
-            var tweets = await this.timelineService.GetTimelineAsync(id, 10);
+            var user = await this.userService.GetUser(id);
 
-            return tweets;
+            return user;
         }
 
         #endregion

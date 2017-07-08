@@ -1,5 +1,7 @@
 ﻿namespace Kerr.TwitterFeed.Services.Authentication
 {
+    using System.Threading.Tasks;
+
     using LinqToTwitter;
 
     /// <summary>
@@ -15,7 +17,7 @@
         /// <returns>
         ///     The <see cref="IAuthorizer" />.
         /// </returns>
-        IAuthorizer GetApplicationOnlyAuthorizer();
+        Task<IAuthorizer> GetApplicationOnlyAuthorizer();
 
         #endregion
     }

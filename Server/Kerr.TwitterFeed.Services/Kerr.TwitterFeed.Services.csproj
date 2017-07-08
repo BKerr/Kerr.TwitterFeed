@@ -60,7 +60,9 @@
   <ItemGroup>
     <Compile Include="Authentication\IProvideTwitterAuthentication.cs" />
     <Compile Include="Endpoints\Interfaces\ITimelineService.cs" />
+    <Compile Include="Endpoints\Interfaces\IUserService.cs" />
     <Compile Include="Endpoints\TimelineService.cs" />
+    <Compile Include="Endpoints\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

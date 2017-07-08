@@ -8,6 +8,7 @@ namespace Kerr.TwitterFeed.App_Start
 
     using Kerr.TwitterFeed.Services.Authentication;
     using Kerr.TwitterFeed.Services.Endpoints;
+    using Kerr.TwitterFeed.Services.Endpoints.Interfaces;
     using Kerr.TwitterFeed.Utilities;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
@@ -67,6 +68,7 @@ namespace Kerr.TwitterFeed.App_Start
         {
             kernel.Bind<IProvideTwitterAuthentication>().To<TwitterAuthorizer>().InSingletonScope();
             kernel.Bind<ITimelineService>().To<TimelineService>();
+            kernel.Bind<IUserService>().To<UserService>();
         }        
     }
 }

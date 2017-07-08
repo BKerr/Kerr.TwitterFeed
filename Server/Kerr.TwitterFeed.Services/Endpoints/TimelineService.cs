@@ -43,12 +43,13 @@
         /// <inheritdoc />
         public async Task<IEnumerable<Tweet>> GetTimelineAsync(string screenname, int count)
         {
-            var authorization = await this.GetAuthorizedSession();
+            var authorization = await this.twitterAuthenticationProvider.GetApplicationOnlyAuthorizer();
 
             using (var twitterContext = new TwitterContext(authorization))
             {
                 var tweets = await(from tweet in twitterContext.Status
-                                   where tweet.Type == StatusType.User && tweet.ScreenName == screenname && tweet.Count == count
+                                   where tweet.Type == StatusType.User && tweet.ScreenName == screenname
+                                         && tweet.Count == count
                                    select tweet).ToListAsync();
 
                 return tweets.Select(
@@ -64,20 +65,6 @@
                                                   CreatedAt = t.CreatedAt
                                               });
             }
-        }
-
-        /// <summary>
-        /// The get authorized session.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="Task"/>.
-        /// </returns>
-        private async Task<IAuthorizer> GetAuthorizedSession()
-        {
-            var auth = this.twitterAuthenticationProvider.GetApplicationOnlyAuthorizer();
-            await auth.AuthorizeAsync();
-
-            return auth;
         }
 
         #endregion

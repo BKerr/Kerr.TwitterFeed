@@ -1,6 +1,7 @@
 ﻿namespace Kerr.TwitterFeed.Utilities
 {
     using System.Configuration;
+    using System.Threading.Tasks;
 
     using Kerr.TwitterFeed.Services.Authentication;
     using Kerr.TwitterFeed.Shared.Constants;
@@ -15,16 +16,20 @@
         #region ///  Methods  ///
 
         /// <inheritdoc />
-        public IAuthorizer GetApplicationOnlyAuthorizer()
+        public async Task<IAuthorizer> GetApplicationOnlyAuthorizer()
         {
-            return new ApplicationOnlyAuthorizer
-                       {
-                           CredentialStore = new InMemoryCredentialStore
-                                                 {
-                                                     ConsumerKey = ConfigurationManager.AppSettings[ApplicationKey.TwitterConsumerKey],
-                                                     ConsumerSecret = ConfigurationManager.AppSettings[ApplicationKey.TwitterConsumerSecret]
-                                                 }
-                       };
+            var authorizer = new ApplicationOnlyAuthorizer
+                {
+                    CredentialStore = new InMemoryCredentialStore
+                                          {
+                                              ConsumerKey = ConfigurationManager.AppSettings[ApplicationKey.TwitterConsumerKey],
+                                              ConsumerSecret = ConfigurationManager.AppSettings[ApplicationKey.TwitterConsumerSecret]
+                                          }
+                };
+
+            await authorizer.AuthorizeAsync();
+                
+            return authorizer;
         }
 
         #endregion
