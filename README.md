@@ -10,8 +10,7 @@
 - If the WebAPI is not bound to port 2110, update line 3 of Client/proxy.conf.json to the appropriate port
 - Launch angular app via command line:
 
-
-  ```sh
+```
 $ cd %Repo%/Client
 $ npm start
 ```
