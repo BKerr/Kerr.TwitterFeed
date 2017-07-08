@@ -1,4 +1,25 @@
-<div class="timeline-container">
+<div class="timeline-container" [style.background-image.url]="user.BackgroundImageUrl">
+  
+  <h1>{{ user.Name }}</h1>
+    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span> {{ user.Location }}
+    <p class="description">{{ user.Description }}</p>
+  
+  <hr />
+  <img src="{{ user.BannerUrl }}" class="img-responsive" />
+
+    <div class="row">
+      <div class="col-xs-12 stat-box">
+        <div><b>Following</b> <h4>{{ user.FollowingCount | number }}</h4></div>
+        <div><b>Followers</b> <h4>{{ user.FollowersCount | number }}</h4></div>
+        <div><b>Tweets</b> <h4>{{ user.TweetCount | number }}</h4></div>
+        <div><b>Favorites</b> <h4>{{ user.FavoriteCount | number }}</h4></div>
+      </div>
+    </div>
+
+    <hr />
+
+  <h3>Latest 10 tweets of {{ user.TweetCount | number }}</h3>
+
   <form>
     <div class="form-group">
       <input type="text" #search (keyup)="filterTweetsOn(search.value)" class="form-control" id="search" placeholder="Filter tweets">

@@ -13,4 +13,11 @@ export class TwitterService {
         .get('/api/timeline/' + username)
         .map(res => res.json())
     }
+
+  getUser(username: string) {
+      return this.http
+        .get('/api/user/' + username)
+        .map(res => res.json())
+  }
+
 }

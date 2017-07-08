@@ -15,6 +15,7 @@ import { TwitterService } from '../shared/twitter.service';
 export class TwitterTimelineComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
+  user: any;
   tweets: any[];
   filteredTweets: any[];
   searchTerm: string;
@@ -22,6 +23,8 @@ export class TwitterTimelineComponent implements OnInit, OnDestroy {
   constructor(private twitterService: TwitterService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.user = '{}';
+    this.getUser();
     this.updateTweets()
     
     Observable
@@ -40,6 +43,13 @@ export class TwitterTimelineComponent implements OnInit, OnDestroy {
           this.filterTweetsOn(this.searchTerm);
           }
         );
+  }
+
+  getUser() {
+    this.route.params
+        .switchMap((params: Params) => this.twitterService.getUser(params['id']))
+        .takeUntil(this.ngUnsubscribe)
+        .subscribe(user => this.user = user);
   }
 
   filterTweetsOn(searchTerm: string) {      

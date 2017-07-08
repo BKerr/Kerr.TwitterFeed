@@ -2,3 +2,26 @@
     margin-top:25px;
     margin-bottom:25px;
 }
+
+.stat-box {
+    margin-top:10px;
+    background-color:#FFF;
+    border:1px solid silver;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.stat-box > div {
+    padding-top:10px;
+    display: inline-block;
+    width:24%;
+    border-right:1px solid silver;
+}
+
+.stat-box > div:last-of-type {
+    border-right:none;
+}
+
+.description {
+    margin-top:5px;
+}
