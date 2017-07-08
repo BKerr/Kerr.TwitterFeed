@@ -1,7 +1,7 @@
 <div class="timeline-container">
   <form>
     <div class="form-group">
-      <input type="text" (keyup)="onKey($event)" class="form-control" id="search" placeholder="Filter tweets">
+      <input type="text" #search (keyup)="filterTweetsOn(search.value)" class="form-control" id="search" placeholder="Filter tweets">
     </div>
   </form>
 
