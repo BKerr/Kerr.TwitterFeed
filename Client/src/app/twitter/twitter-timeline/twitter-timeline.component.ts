@@ -12,13 +12,27 @@ import { Tweet } from '../shared/tweet.model';
 })
 export class TwitterTimelineComponent implements OnInit {
   tweets: Tweet[];
+  filteredTweets: Tweet[];
 
   constructor(private twitterService: TwitterService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params
     .switchMap((params: Params) => this.twitterService.getRecentTweets(params['id']))
-    .subscribe(tweets => this.tweets = tweets);
+    .subscribe(tweets => {
+      this.tweets = tweets;
+      this.filteredTweets = tweets;
+      }
+    );
   }
 
+  onKey(event: any) { // without type info
+    let searchTerm = event.target.value
+       
+    this.filteredTweets = [];
+
+    this.tweets.forEach(tweet => {
+      if (tweet['Text'].search(new RegExp(searchTerm, "i")) >= 0) this.filteredTweets.push(tweet);
+    });
+  }
 }

@@ -1,4 +1,9 @@
 <div class="timeline-container">
-  <h2>Tweets!</h2>
-  <app-twitter-tweet *ngFor="let tweet of tweets" [tweet]="tweet"></app-twitter-tweet>
+  <form>
+    <div class="form-group">
+      <input type="text" (keyup)="onKey($event)" class="form-control" id="search" placeholder="Filter tweets">
+    </div>
+  </form>
+
+  <app-twitter-tweet *ngFor="let tweet of filteredTweets" [tweet]="tweet"></app-twitter-tweet>
 </div>
