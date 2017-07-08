@@ -5,5 +5,8 @@
     </div>
   </form>
 
-  <app-twitter-tweet *ngFor="let tweet of filteredTweets" [tweet]="tweet"></app-twitter-tweet>
+  <div class="row auto-clear">
+      <app-twitter-tweet class="col-xs-12 col-sm-6 col-md-6 col-lg-6" *ngFor="let tweet of filteredTweets" [tweet]="tweet"></app-twitter-tweet>
+  </div>
+  
 </div>

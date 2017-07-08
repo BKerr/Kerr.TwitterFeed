@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 
 // Define the routes
 const ROUTES = [
-  { path: '', redirectTo: 'timeline', pathMatch: 'full' }
+  { path: '', redirectTo: 'timeline/salesforce', pathMatch: 'full' }
 ];
 
 @NgModule({
