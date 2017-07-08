@@ -1,11 +1,23 @@
 ﻿namespace Kerr.TwitterFeed.Shared.Domain
 {
+    using System;
+
     /// <summary>
     ///     The tweet.
     /// </summary>
     public class Tweet
     {
         #region ///  Properties  ///
+
+        /// <summary>
+        ///     Gets or sets the created at.
+        /// </summary>
+        public DateTime CreatedAt { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the favorited.
+        /// </summary>
+        public int Favorited { get; set; }
 
         /// <summary>
         ///     Gets or sets the id.

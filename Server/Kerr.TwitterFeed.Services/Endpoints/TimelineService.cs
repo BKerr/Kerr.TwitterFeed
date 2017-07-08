@@ -59,7 +59,9 @@
                                                   ScreenName = t.ScreenName,
                                                   ProfileImageUrl = t.User.ProfileImageUrl,
                                                   RetweetCount = t.RetweetCount,
-                                                  Username = t.User.Name
+                                                  Username = t.User.Name,
+                                                  Favorited = t.FavoriteCount ?? 0,
+                                                  CreatedAt = t.CreatedAt
                                               });
             }
         }

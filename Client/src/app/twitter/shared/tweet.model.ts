@@ -6,6 +6,8 @@ export class Tweet {
     id: string;
     retweetCount: number;
     profileImageUrl: string;
+    favorited: number;
+    createdAt: Date;
 
     constructor(){}
 
