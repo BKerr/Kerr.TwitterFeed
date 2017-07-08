@@ -6,7 +6,6 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/takeUntil';
 
 import { TwitterService } from '../shared/twitter.service';
-import { Tweet } from '../shared/tweet.model';
 
 @Component({
   selector: 'app-twitter-timeline',
@@ -16,8 +15,8 @@ import { Tweet } from '../shared/tweet.model';
 export class TwitterTimelineComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
-  tweets: Tweet[];
-  filteredTweets: Tweet[];
+  tweets: any[];
+  filteredTweets: any[];
   searchTerm: string;
 
   constructor(private twitterService: TwitterService, private route: ActivatedRoute) { }
