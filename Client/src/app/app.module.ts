@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-import { CoreModule } from './core/core.module';
 import { TwitterModule } from './twitter/twitter.module';
 
 import { AppComponent } from './app.component';
@@ -19,7 +18,6 @@ const ROUTES = [
   ],
   imports: [
     BrowserModule,
-    CoreModule,
     TwitterModule,
     HttpModule,
     RouterModule.forRoot(ROUTES)
